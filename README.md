@@ -1,77 +1,47 @@
 # Geometric Expansion
 
-Academic Java game project developed collaboratively by **Alexandre Selani, Cristiano Marques, and Pedro Francischeto**.
+Geometric Expansion is a 2D platform game developed in Java using Swing as an academic group project.
 
-This repository is being reorganized from the original university-project version so that the source code is easier to understand, build, and present as a portfolio project.
+The project includes multiple playable levels, character movement, collision detection, obstacles, platforms, custom graphical components, background transitions, and optional audio playback.
 
-## Project overview
+The original project was developed during college and was later reorganized, cleaned, and documented for portfolio presentation while preserving its original gameplay and core implementation.
 
-Geometric Expansion is a desktop game built with **Java Swing**. The code includes:
+## Features
 
-- a start screen and level-selection interface;
-- three playable levels;
-- player movement and jumping;
-- obstacle, platform, and collision handling;
-- custom images and font resources;
-- audio support for each level;
-- timers and threads used by the game loop and collision checks.
+- 2D platform gameplay
+- Three playable levels
+- Character movement and jumping
+- Collision detection
+- Platforms and obstacles
+- Level selection menu
+- Custom Swing components
+- Animated background transitions
+- Custom fonts and graphical resources
+- Optional audio support
 
-## Project structure
+## Technologies
+
+- Java
+- Java Swing
+- AWT
+- Java Threads
+- Git
+
+The project is currently tested with:
 
 ```text
-geometric-expansion/
-├── src/
-│   └── main/
-│       ├── java/          # Java source files
-│       └── resources/
-│           └── Assets/    # Images, font, and local audio resources
-├── docs/                  # Cleanup notes and project trees
-├── build.ps1              # Windows build helper
-├── run.ps1                # Windows run helper
-└── .gitignore
-```
+Java 21 LTS
 
-## Requirements
+## Screenshots
 
-- JDK 17 or newer
-- Windows PowerShell for the included helper scripts
+### Main Menu
 
-The cleaned source has been compilation-tested with **JDK 21**.
+![Main Menu](docs/images/main-menu.png)
 
-## Build
+### Level Selection
 
-From PowerShell, in the project folder:
+![Level Selection](docs/images/level-selection.png)
 
-```powershell
-.\build.bat
-```
+### Gameplay
 
-The script compiles the sources to `build/classes` and copies the resources to the classpath.
-
-## Run
-
-After building:
-
-```powershell
-.\run.bat
-```
-
-The application starts from `TelaInicial`.
-
-## Important note about assets
-
-The original project contains image, font, and audio assets. Their origin and redistribution rights should be reviewed before the repository is made public.
-
-The three WAV files are intentionally listed in `.gitignore` so they are not added to Git by accident. The local copies are kept in this cleanup package only so the original project can still be tested while the asset review is pending.
-
-See [`ASSET_REVIEW.md`](ASSET_REVIEW.md) before publishing the repository.
-
-## Authors
-
-- Alexandre Selani
-- Cristiano Marques
-- Pedro Francischeto
-
-## Status
-
-This is the **first cleanup stage**. The game rules and level design were intentionally left unchanged. The current changes focus on project structure and portable resource loading. Code-style cleanup, documentation of individual classes, build tooling, and further refactoring can be handled in later stages.
+![Gameplay](docs/images/gameplay.png)
