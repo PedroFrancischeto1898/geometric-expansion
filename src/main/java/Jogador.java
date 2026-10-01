@@ -209,7 +209,7 @@ class ThreadColisoesCimaFrente extends Thread {//thread da colisao frontal/de ci
     
     public void run() {
         while (jogador.getVivo()) {
-            Iterator<Plataforma> plataformaIterator = painelDeJogo.plataformas.iterator();
+            Iterator<Plataforma> plataformaIterator = PainelDeJogo.plataformas.iterator();
             while(plataformaIterator.hasNext()) {
                 Plataforma obj = plataformaIterator.next();
                 if (checaCima(jogador, obj) || checaFrente(jogador, obj)) {
@@ -220,7 +220,7 @@ class ThreadColisoesCimaFrente extends Thread {//thread da colisao frontal/de ci
                     break;
                 }
             }
-            Iterator<Obstaculo> obstaculoIterator = painelDeJogo.obstaculos.iterator();
+            Iterator<Obstaculo> obstaculoIterator = PainelDeJogo.obstaculos.iterator();
             while(obstaculoIterator.hasNext()) {
                 Obstaculo obj = obstaculoIterator.next();
                 if (checaCima(jogador, obj) || checaFrente(jogador, obj)) {
@@ -275,7 +275,7 @@ class ThreadColisaoBaixo extends Thread {
     public void run() {
         while (jogador.getVivo()) {
             boolean colidindo = false;
-            Iterator<Plataforma> plataformaIterator = painelDeJogo.plataformas.iterator();
+            Iterator<Plataforma> plataformaIterator = PainelDeJogo.plataformas.iterator();
             while (plataformaIterator.hasNext()) {
                 Plataforma obj = plataformaIterator.next();
                 if (checaBaixo(jogador, obj)) {
@@ -288,7 +288,7 @@ class ThreadColisaoBaixo extends Thread {
                 }
             }
             
-            Iterator<Jumper> jumIterator = painelDeJogo.jumpers.iterator();
+            Iterator<Jumper> jumIterator = PainelDeJogo.jumpers.iterator();
             while (jumIterator.hasNext()) {
                 Jumper obj = jumIterator.next();
                 if (checaBaixo(jogador, obj)) {
@@ -304,7 +304,7 @@ class ThreadColisaoBaixo extends Thread {
             }
             if (!colidindo) {jogador.setNoChao(false);}
 
-            Iterator<Obstaculo> obstaculoIterator = painelDeJogo.obstaculos.iterator();
+            Iterator<Obstaculo> obstaculoIterator = PainelDeJogo.obstaculos.iterator();
             while (obstaculoIterator.hasNext()) {
                 Obstaculo obj = obstaculoIterator.next();
                 if (checaBaixo(jogador, obj)) {

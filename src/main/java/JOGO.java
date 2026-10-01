@@ -33,7 +33,7 @@ public class JOGO extends JFrame {//aqui sao feitas as configuracoes do frame e 
         
         
         
-        painelDeJogo painel;//instanciando a fase
+        PainelDeJogo painel;//instanciando a fase
         if (nivel == 1) {
             painel = new Fase1(this);
         } else if(nivel ==2){

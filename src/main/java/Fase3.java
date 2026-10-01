@@ -2,7 +2,7 @@ import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
 
 import java.awt.Color;
-public class Fase3 extends painelDeJogo {
+public class Fase3 extends PainelDeJogo {
 
     private float fimDaMusica; 
     private Concluido concluido;

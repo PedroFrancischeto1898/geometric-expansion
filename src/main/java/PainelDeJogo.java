@@ -4,7 +4,7 @@ import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class painelDeJogo extends JPanel implements ActionListener, KeyListener, MouseListener {// o "esqueleto das fases" 
+public abstract class PainelDeJogo extends JPanel implements ActionListener, KeyListener, MouseListener {// o "esqueleto das fases" 
     protected JFrame frame;
     public static Jogador jogador= null;
 
@@ -23,7 +23,7 @@ public abstract class painelDeJogo extends JPanel implements ActionListener, Key
     
     public static Timer temporizador = null;
 
-    public painelDeJogo(JFrame frame) {
+    public PainelDeJogo(JFrame frame) {
         inicializarJogo(frame);
     }
 
@@ -200,7 +200,7 @@ class ThreadMudaFundo extends Thread {
     }
 
     public void run() {
-        while (!((JOGO.planoDeFundo.getH() >=( h- Math.abs(2f*incremento))) && (JOGO.planoDeFundo.getH() <=(h + Math.abs(2f*incremento)))) && painelDeJogo.jogador.getVivo()) {
+        while (!((JOGO.planoDeFundo.getH() >=( h- Math.abs(2f*incremento))) && (JOGO.planoDeFundo.getH() <=(h + Math.abs(2f*incremento)))) && PainelDeJogo.jogador.getVivo()) {
             JOGO.planoDeFundo.setH(JOGO.planoDeFundo.getH() + incremento);
             try {
                 Thread.sleep(30);

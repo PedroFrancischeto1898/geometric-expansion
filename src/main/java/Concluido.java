@@ -41,12 +41,12 @@ public class Concluido extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
                 MusicaTemp.reset();
-                painelDeJogo.jogador.setVivo(false);
-                painelDeJogo.jogador.matarThreads();
-                painelDeJogo.jogador=null;
-                painelDeJogo.temporizador=null;
-                painelDeJogo.vPlataformas=-4;
-                painelDeJogo.velocidadeJogador=0;
+                PainelDeJogo.jogador.setVivo(false);
+                PainelDeJogo.jogador.matarThreads();
+                PainelDeJogo.jogador=null;
+                PainelDeJogo.temporizador=null;
+                PainelDeJogo.vPlataformas=-4;
+                PainelDeJogo.velocidadeJogador=0;
                 PlanoDeFundo.stopTimer();
 
                 new JOGO(nivel);
@@ -63,12 +63,12 @@ public class Concluido extends JPanel {
        
                 frame.dispose();
                 MusicaTemp.reset();
-                painelDeJogo.jogador.setVivo(false);
-                painelDeJogo.jogador.matarThreads();
-                painelDeJogo.jogador=null;
-                painelDeJogo.temporizador=null;
-                painelDeJogo.vPlataformas=-4;
-                painelDeJogo.velocidadeJogador=0;
+                PainelDeJogo.jogador.setVivo(false);
+                PainelDeJogo.jogador.matarThreads();
+                PainelDeJogo.jogador=null;
+                PainelDeJogo.temporizador=null;
+                PainelDeJogo.vPlataformas=-4;
+                PainelDeJogo.velocidadeJogador=0;
                 PlanoDeFundo.stopTimer();
 
                 

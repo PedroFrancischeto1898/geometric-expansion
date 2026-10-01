@@ -24,7 +24,7 @@
 ./src/main/java/PlanoDeFundo.java
 ./src/main/java/Plataforma.java
 ./src/main/java/TelaInicial.java
-./src/main/java/painelDeJogo.java
+./src/main/java/PainelDeJogo.java
 ./src/main/resources/Assets/ButtonPlay.png
 ./src/main/resources/Assets/Chao.png
 ./src/main/resources/Assets/CustomFont.otf
