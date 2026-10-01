@@ -43,7 +43,7 @@ The cleaned source has been compilation-tested with **JDK 21**.
 From PowerShell, in the project folder:
 
 ```powershell
-.\build.ps1
+.\build.bat
 ```
 
 The script compiles the sources to `build/classes` and copies the resources to the classpath.
@@ -53,7 +53,7 @@ The script compiles the sources to `build/classes` and copies the resources to t
 After building:
 
 ```powershell
-.\run.ps1
+.\run.bat
 ```
 
 The application starts from `TelaInicial`.

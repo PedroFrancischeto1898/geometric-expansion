@@ -42,8 +42,6 @@ public class Menu extends JFrame {
                 placa.setBounds(100, 125, 600, 150);
                 placa.setOnClick(() -> {
                     int nivel = placa.getNivel();
-                    System.out.println("Indo para o nível: " + nivel);
-                    
                     iniciarNivel(nivel);
                 });
                 layeredPane.add(placa, JLayeredPane.PALETTE_LAYER);
@@ -91,8 +89,6 @@ public class Menu extends JFrame {
         private void iniciarNivel(int nivel) {
             super.dispose();
             new JOGO(nivel);
-            
-            System.out.println("Iniciando nível " + nivel);
             
         }
 

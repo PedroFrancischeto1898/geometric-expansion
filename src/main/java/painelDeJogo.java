@@ -142,14 +142,11 @@ public abstract class painelDeJogo extends JPanel implements ActionListener, Key
         jogador.setPulando(false);
         jogador.setNoChao(true);
         
-        System.out.println("dsfsdfsf");
-        
-       
         
         
         //try{Thread.sleep(300);}catch(Exception e){}
         gerarObstaculos();
-       
+
         jogador.reiniciarThreads();
         
         try{Thread.sleep(600);}catch(Exception e){}

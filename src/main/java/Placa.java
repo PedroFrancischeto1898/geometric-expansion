@@ -1,84 +1,135 @@
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontFormatException;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.RenderingHints;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
+
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
 
 public class Placa extends JPanel {
-    //Privatizar as variaveis que vou usar nessa bomba de placa para poder pegar direto e não precisar passar por parametro
-        private String nome;
-        private int nivel;
-        private Font customFont;
-        private Image imagem;
-        private int imgX, imgY, imgWidth, imgHeight;
-        private Runnable onClick;
 
-    public Placa(String nome, int nivel, String imagemPath, int imgX, int imgY, int imgWidth, int imgHeight) {
-        //Passando os parametros para as variaveis que eu criei
-            this.nome = nome;
-            this.nivel = nivel;
-            this.imgX = imgX;
-            this.imgY = imgY;
-            this.imgWidth = imgWidth;
-            this.imgHeight = imgHeight;
-        
-        //nessa bomba eu defino a cor da placa 
+    private String nome;
+    private int nivel;
+    private Font customFont;
+    private Image imagem;
+    private int imgX;
+    private int imgY;
+    private int imgWidth;
+    private int imgHeight;
+    private Runnable onClick;
+
+    public Placa(
+            String nome,
+            int nivel,
+            String imagemPath,
+            int imgX,
+            int imgY,
+            int imgWidth,
+            int imgHeight) {
+
+        this.nome = nome;
+        this.nivel = nivel;
+        this.imgX = imgX;
+        this.imgY = imgY;
+        this.imgWidth = imgWidth;
+        this.imgHeight = imgHeight;
+
         setBackground(new Color(0, 0, 0, 0));
 
-        //Essa parte é receita de bolo para caregar a fonte e a imagem , nem precisava de catch mas eu dei ctrl c no código que tinha feito na lista
-            try {
-                InputStream is = getClass().getResourceAsStream("/Assets/CustomFont.otf");
-                if (is != null) {
-                    customFont = Font.createFont(Font.TRUETYPE_FONT, is).deriveFont(45f);
+        carregarFonte();
+        carregarImagem(imagemPath);
+
+        addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (onClick != null) {
+                    onClick.run();
                 }
-            } catch (IOException | FontFormatException e) {
-                e.printStackTrace();
+            }
+        });
+    }
+
+    private void carregarFonte() {
+        try (InputStream is =
+                getClass().getResourceAsStream("/Assets/CustomFont.otf")) {
+
+            if (is != null) {
+                customFont = Font
+                        .createFont(Font.TRUETYPE_FONT, is)
+                        .deriveFont(45f);
+            } else {
+                System.err.println(
+                        "Fonte CustomFont.otf não encontrada. Usando fonte padrão.");
                 customFont = new Font("Serif", Font.PLAIN, 24);
             }
 
-            try {
-                imagem = new ImageIcon(getClass().getResource(imagemPath)).getImage();
-            } catch (Exception e) {
-                e.printStackTrace();
-                System.err.println("Erro: Imagem " + imagemPath + " não pôde ser carregada.");
-            }
-        //colocando o mouse para jogo
+        } catch (IOException | FontFormatException e) {
+            System.err.println("Erro ao carregar a fonte personalizada.");
+            e.printStackTrace();
 
-            addMouseListener(new MouseAdapter() {
-                @Override
-                public void mouseClicked(MouseEvent e) {
-                    if (onClick != null) {
-                        onClick.run();
-                    }
-                }
-            });
+            customFont = new Font("Serif", Font.PLAIN, 24);
+        }
     }
 
-    //Essa parte é onde a criança chora e a mãe não vê, essa parte é de gente grande, aqui é onde eu brinco com a parte grafica, onde eu testo pra caramba onde vai ficar as coisas, em que possição, cor (para deixar em a impreção de transparente) e mais uma porrada de coisa (OBS: NÃO TOQUE SE NÃO VAI DA MERDA, E MUITA MERDA!!!!)
-        @Override
-        protected void paintComponent(Graphics g) {
-            super.paintComponent(g);
-            Graphics2D g2 = (Graphics2D) g;
-            g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-            g2.setColor(new Color(0, 0, 0, 100));
+    private void carregarImagem(String imagemPath) {
+        URL imagemUrl = getClass().getResource(imagemPath);
 
-            int arc = 30;
-            g2.fillRoundRect(0, 0, getWidth(), getHeight(), arc, arc);
-
-            g2.setFont(customFont);
-            g2.setColor(Color.WHITE);
-
-            g2.drawString(nome, 160, 90);
-
-            String nivelStr = String.valueOf(nivel);
-            g2.drawString(nivelStr, 550, 50);
-
-            if (imagem != null) {
-                g2.drawImage(imagem, imgX, imgY, imgWidth, imgHeight, this);
-            }
+        if (imagemUrl != null) {
+            imagem = new ImageIcon(imagemUrl).getImage();
+        } else {
+            System.err.println(
+                    "Erro: imagem " + imagemPath + " não pôde ser carregada.");
         }
-        // Agora essa merda aqui em baixo serve para saber em qual nivel está para que a seta saiba para onde vai
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+
+        Graphics2D g2 = (Graphics2D) g;
+
+        g2.setRenderingHint(
+                RenderingHints.KEY_ANTIALIASING,
+                RenderingHints.VALUE_ANTIALIAS_ON);
+
+        g2.setColor(new Color(0, 0, 0, 100));
+
+        int arc = 30;
+        g2.fillRoundRect(
+                0,
+                0,
+                getWidth(),
+                getHeight(),
+                arc,
+                arc);
+
+        g2.setFont(customFont);
+        g2.setColor(Color.WHITE);
+
+        g2.drawString(nome, 160, 90);
+
+        String nivelStr = String.valueOf(nivel);
+        g2.drawString(nivelStr, 550, 50);
+
+        if (imagem != null) {
+            g2.drawImage(
+                    imagem,
+                    imgX,
+                    imgY,
+                    imgWidth,
+                    imgHeight,
+                    this);
+        }
+    }
+
     public void atualizarPlaca(String nome, int nivel) {
         this.nome = nome;
         this.nivel = nivel;
@@ -92,4 +143,5 @@ public class Placa extends JPanel {
     public void setOnClick(Runnable onClick) {
         this.onClick = onClick;
     }
+
 }

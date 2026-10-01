@@ -117,9 +117,8 @@ public class Jogador {
                 baixo.join();
             if(cimaFrente.isAlive())
                 cimaFrente.join();
-            System.out.println("terminou as threads");
         }catch(Exception e){
-            System.out.println("nao terminou");
+            e.printStackTrace();
         }
             
     }
@@ -130,16 +129,15 @@ public class Jogador {
             cimaFrente = new ThreadColisoesCimaFrente(this);
             baixo.start();
             cimaFrente.start();
-            System.out.println("iniciando threads");
             
     }
     public void atualizar() {
-       
-       if(pulando || !noChao){//logica de gravidade
-        y += velocidadeAtual;
-        velocidadeAtual+=gravidade;
-       }
-       if(y>JOGO.height) vivo = false;
+    
+        if(pulando || !noChao){//logica de gravidade
+            y += velocidadeAtual;
+            velocidadeAtual+=gravidade;
+        }
+        if(y>JOGO.height) vivo = false;
         
     }
 
