@@ -51,7 +51,7 @@ public class PlanoDeFundo extends JPanel implements ActionListener {
         }
         
         if(nivel == 0){
-            h += 0.005;} // Atualizando a cor gradiente
+            h += 0.005f;} // Atualizando a cor gradiente
         if (h > 1) h = 0;
         if(h<0) h=1;
         repaint();

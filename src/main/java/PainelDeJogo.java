@@ -113,11 +113,8 @@ public abstract class PainelDeJogo extends JPanel implements ActionListener, Key
     }
 
     protected void atualizarJogo() {
-        // if((int)JOGO.musica.segundos()==1f)System.out.println(plataformas.get(0));
-        // System.out.println(musica.segundos());
         jogador.atualizar();
         if (!jogador.getVivo()) {
-            System.out.println(MusicaTemp.segundos());
             reiniciarJogo();
         }
 
@@ -188,24 +185,5 @@ public abstract class PainelDeJogo extends JPanel implements ActionListener, Key
 
     @Override
     public void mouseExited(MouseEvent e) {}
-}
 
-class ThreadMudaFundo extends Thread {
-    protected float h;
-    protected float incremento;
-
-    ThreadMudaFundo(float h, float incremento) {
-        this.h = h;
-        this.incremento = incremento;
-    }
-
-    public void run() {
-        while (!((JOGO.planoDeFundo.getH() >=( h- Math.abs(2f*incremento))) && (JOGO.planoDeFundo.getH() <=(h + Math.abs(2f*incremento)))) && PainelDeJogo.jogador.getVivo()) {
-            JOGO.planoDeFundo.setH(JOGO.planoDeFundo.getH() + incremento);
-            try {
-                Thread.sleep(30);
-            } catch (Exception e) {}
-        }
-        this.interrupt();
-    }
 }

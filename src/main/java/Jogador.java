@@ -28,7 +28,6 @@ public class Jogador {
     Jogador(int x, int y){
         try {
             skin = ImageIO.read(Jogador.class.getResource("/Assets/bob.png"));
-            System.out.println(skin);
         } catch (IOException e) {
             e.printStackTrace();
         };
@@ -213,9 +212,6 @@ class ThreadColisoesCimaFrente extends Thread {//thread da colisao frontal/de ci
             while(plataformaIterator.hasNext()) {
                 Plataforma obj = plataformaIterator.next();
                 if (checaCima(jogador, obj) || checaFrente(jogador, obj)) {
-                    
-                    //if(checaFrente(jogador, obj)) System.out.println("frente");
-                        
                     jogador.setVivo(false);
                     break;
                 }

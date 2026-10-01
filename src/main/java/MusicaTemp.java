@@ -38,7 +38,7 @@ public class MusicaTemp {//classe da musica
         
         }
         catch (Exception e) {
-        System.out.println("The specified audio file is not supported.");
+        System.err.println("The specified audio file is not supported.");
         e.printStackTrace();}
 
     }

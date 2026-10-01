@@ -9,7 +9,7 @@ import javax.swing.SwingUtilities;
 
 public class Menu extends JFrame {
     private Placa[] placas;
-    private int indiceAtual = 0;//mudar depois
+    private int indiceAtual = 0;
 
     public Menu() {
         setTitle("Tela Inicial");
