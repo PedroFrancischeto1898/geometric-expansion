@@ -1,0 +1,22 @@
+# Compiled Java files and build output
+*.class
+build/
+out/
+target/
+
+# IDE / editor files
+.idea/
+.vscode/
+*.iml
+.classpath
+.project
+.settings/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Local audio assets — keep out of a public repository until usage rights are confirmed
+src/main/resources/Assets/DigitalLove2.wav
+src/main/resources/Assets/Remember.wav
+src/main/resources/Assets/Hk.wav
